@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --primary: #9333ea;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- ĐÃ SỬA LẠI ĐOẠN NÀY --- */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  
+  /* Thêm dòng này cho Chrome/Safari/Edge cũ */
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+  /* Dòng chuẩn cho trình duyệt mới */
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+}
+
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: rgba(147, 51, 234, 0.3);
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
 }
